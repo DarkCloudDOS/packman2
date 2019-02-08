@@ -1,0 +1,459 @@
+
+         Borland Pascal Version 7.0
+         Pack Man 2 - The Revenge. Document file.
+
+
+         Copyright (C) 1996,97 Diego Iastrubni
+
+
+  -=П SECOND RELEASE П=-
+
+  шшшшшш    шшшшш    шшшшш  шш  шш     шш    шш   шшшшш  шшш  шш     шшшшшш
+   шш  шш  шш   шш  шш      шш шш      шшш  шшш  шш   шш шш шшшш    шш    шш
+  шшшшшш   шшшшшшш  шш      шшшш       шш шш шш  шшшшшшш шш  шшш        шшщ
+   шш      шш   шш  шш      шш  шш     шш    шш  шш   шш шш   шш      чшщ
+   шш      шш   шш   шшшшш  шш  шш     шш    шш  шш   шш шш   шш    шшшшшшшш
+
+
+      TTTTTT  HH HH  EEEE     RRRRR  EEEE VV VV EEEE NN NN  GGGGG  EEEE
+        TT    HHHHH  EE       RRRR   EE    V V  EE   NNNNN  GG G   EE
+        TT    HH HH  EEEE     RR  R  EEEE   V   EEEE NN NN  GGGGG  EEEE
+
+
+Published by:                               ╟╟╟╟╟╟╟╟╟╟  д
+                                           ╟╟╠╠╠╠╠╠╠╠╠╟
+   шшэ эшэ шшщ ш ш   чшш  ш  чшщ ш ш шш     ╟╟╠╠╠шшшшш╠╟╟╟╟╟╟
+   ш ш шэш шэщ шш    ш    ш  ш ш ш ш ш ш    д ╟╠╠╠╠╠╠╠╠╠╠╠╠╟
+   шшъ ш ш ш ш ш ш   чшш  шш чшщ шшш шш       Ё ╟╟╟╟╟╟╟╟╟╟╟╟╟
+                                                       Ё
+                                                    Ё
+
+  Pack Man 2 - The Revenge
+  дддддддддддддддддддддддд
+
+  This game was made for you, a programmer, to learn how to make an object
+orinted game. What is object oriented? It means that all characters on
+the game (mousnters, packman) are actually objects. Each level has about
+20 characters which can be either a player or a mounster of any kind.
+
+  The game needs an 80286-compatible system to run, and above 320K of
+conventional memory to run. It will run with less than that, but not all
+the graphics will be loaded (you will see the background black instead of
+the pictures).
+
+  If are runnig it from the Turbo pascal enviroment you will not have
+all the memory you need to run the full version of the game, you'll
+see a message on the screen:
+
+  "Low memory warning!! There is not enough memory to load all the grapihcs!".
+
+To avoid it try using TPX, BP (they use extended memory instead of normal)
+or run the game from dos prompt (EXE file). If you dont have any of those,
+try to save on memory this way:
+
+   Ч Remove TSR
+   Ч Set OptionsЁLinker Link Buffer to Disk
+   Ч Set Destination to disk
+   Ч Uncheck both debuggers in the OptionsЁDegubber dialog.
+   Ч You can try to load TURBO.EXE to upper memory using DOS
+     command LH.
+   Ч In the OptionsЁEnviromentЁStartUp uncheck Palette-Save
+     graphics screen save, and if you can: also uncheck load TURBO.TPL,
+     but then you will need the SYSTEM.TPU (it is inside TURBO.TPL, use
+     TPUMOVER.EXE to remove it).
+
+   эээээээээээээээээээээээ
+    Protected mode - DPMI   (Only BP.EXE and BPW.EXE)
+   ъъъъъъъъъъъъъъъъъъъъъъъ
+  It is possible to compile the game to run in protected mode. You can do
+it for using more memory, or even using some DLL's. I dont have sources for
+music and sounds FX for protected mode so, the game will work soundless.
+
+  For that you have to define the condition NO_SOUNDS. The best way of doing
+it (no, dont use $IFDEF...), is to set in the compiler options dialog a new
+condition you can do it like this (only in BP.EXE):
+   Press Alt+O, C, choose settings for Protected mode, then press Alt+N
+   and then type "NO_SOUNDS".
+
+                             шшшшшшшшшшшшшшш╩
+                             шш   Bugs    шш╨
+                             шшшшшшшшшшшшшшш╨
+                              хммммммммммммм╪
+
+  Many times you run this program youre computer will crush and you will
+see a message from MM386 saing "Add parameter D=40" or "Add parameter D=64".
+If you do that youre program will not boot-up youre computer and it will
+work perectly. You just need to add a line that looks like this to your
+CONFIG.SYS:
+
+  DEVICE=C:\DOS\EMM386.EXE  D=64  (...more parameters..)
+                           юдддды
+
+  You can also fix this problem by defining NO_SOUNDS as descrived above
+in the DPMI section.
+
+  There is also another bug with the palette, after the 5th level (second
+world) but I dont what it is and it will not be fixed.
+
+
+                             шшшшшшшшшшшшшшшш╩
+                             шш Windows 95 шш╨
+                             шшшшшшшшшшшшшшшш╨
+                              хмммммммммммммм╪
+  The game is capleble of running under this piece of shit, altought
+it was designed to work under a friendlier enviroment then that virus,
+something like like the good old DOS.
+
+
+
+  дддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддд
+   Full source is provided and please, please please do not change it !!!
+  дддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддд
+
+
+
+
+  B.T.W -
+
+    If youre CPU burns out while running the game
+       -  please don't blame me, its on youre responsability.
+
+
+  Unit AdvHsc
+  ддддддддддд
+
+  This unit is the one that plays the music you here (not the sound). In this
+ZIP there is onlyu the TPU's, but you can get a much fuller version from our
+programming site (there is a link to it from our Game Sources site). To learn
+about it it is better to download it.
+
+  Unit Utils
+  дддддддддд
+
+  This unit is a graphics unit written by me, it has a lot of procedures
+not used in this game. It is freeware so use it and copy from it as much
+as you want (where do you think I know all that...). If you have a faster
+PutPixel or GetPixel procedures just assign a new vaule to those variables
+and all the graphics routins (Box, Line, Circle, PutPixel, GetPixel) will
+work faster. Ypu can use it also if you have some X-Modes routins, just
+write A PutPixel for it and all those procedures will work on X-Mode. By the
+way in the first version of this game I did.
+
+  It also has some miscellaneous proceures and macors. For example:
+
+   GetIntVec, SetIntVec : The procedures work exactly as the ones in
+                          DOS unit.
+   SetCursor            : By using this procedure you can change the image
+                          of the mouse cursor. Just pass to it a Cursor_Type
+                          varible. For more information refer to the PC-GPE.
+   InitKeys, DoneKeys   : This procedures enables and disables the new
+                          keyboard interrupt that enables you to read up to
+                          127 keys at the same time.
+                          You do it by acssesing the Key array: each slot
+                          tells you the state of that key (TRUE pressed,
+                          FALSE not pressed ). It also disables the puase key
+                          (and ctrl break), and clear the keyboard buffer
+                          every time a key is pressed.
+                          YOU CANT USE THE ASCII PROCEDURE OR READLN WHILE
+                          THIS INTERRUPT IS ENABLED. THE COMPUTER WILL STOP
+                          RESPONDING. The only way to read some thing from
+                          the keyboard is by using the Key variable.
+
+    Example:
+
+Uses Utils
+Begin
+  InitKeys;
+  WriteLn( 'Press Esc+Ctrl+Alt to quit!!!' );
+  Repeat
+  Until Key[1]    {The scan-code of ESC}
+    and key[29]   {The scan-code of Ctrl}
+    and Key[56];  {The scan-code of Alt}
+  DoneKeys;
+End.
+
+  Thanks to
+    Ariel Keselman
+    Dr. Unknown (The one who wrote the unit ADG?)
+
+
+  Unit Font8x8
+  дддддддддддд
+
+  This unit declared a bit map font wich is simular to the bios 8x8 char set.
+You can use the font form the bios and then draw on it on the screen!!!. It
+works only on graphics modes and if the Utils.PutPixel variable is set to that
+mode (by default it uses the bios interrupt to write to screen so if you are
+using a screen mode wich the bios does not support it will not work).
+
+  Note: The variable Font is a pointer, it cant be nil if you want to use
+        the WriteStr and ReadStr procedures or the font will not draw the
+        letters you want.
+
+  Unit SB
+  ддддддд
+
+  Do you want to play waves? It is found here just declare a RIFF_FILE
+variable call LoadRiff and then PlayBack. Example
+
+Uses SB;
+{$X+}
+Var
+  Ding: RIFF_FILE;
+Begin
+  LoadRiff( 'C:\WINDOWS\DING.WAV', Ding );
+  With Ding  do
+    PlayBack( dData, dLen, nSamplesPerSec )
+  ReadLn;
+End.
+
+  The WAVE_RECORD and play wave procedure do the same, but a WAVE_RECORD is
+smaller then a RIFF_FILE.
+  The bug descrived above is made by this by this unit. I made a program
+that plays waves all by myself, but it slowed down the computer so musch that
+I dont use it any more, it is not good for fats (or even slow games).
+  The unit is based on a unit on the PC-PGE called DSP.
+
+
+  Unit PackMan1
+  ддддддддддддд
+
+  This unit contains the deleration of the constants for picture size,
+level size, and more. It contains the procedures for loading graphics,
+music and voices. It also contains declerations of types and pointers.
+
+  The function GetPic( n: Word ): PPicture just converts the index of
+each place in the level to a picture. For example:
+
+  The level editor writes (opWall) in the file for a wall, and the wall
+picture number is (20), For example, if Level.Buffer[10,10] = opWall
+you should draw on the [10,10] place (in the screen) the picture Pics[20].
+
+
+  Unit PackMan2
+  ддддддддддддд
+
+  This unit provides the most basic objects: TObject, TCharacter, TBonus,
+TEffect and TLevel. The constants that are related to the objects are
+declared here like: sfShouldDraw (means that the character should be drawed),
+sfDead and the direction constants.
+
+
+  TCharacter = Object:  From this object I derive the other characters
+                        in the game the player and the mousnters. It is
+                        basicly an abstract object and you cant insert a
+                        TCharacter to the game.
+
+  TBonus = Object:      This are the bonuses that appear in the screen
+                        and the packman can eat. Thay can give him
+                        strength or hurt him depends on what it takes.
+
+  TEffect = Object:     Effects that you see on the screen while the game
+                        is running are descendants of this object, the
+                        palette cyceling that you see when you east a fruit
+                        is a TEffect.
+
+  TLevel = Object:      A TLevel is what runs the game. It has a function
+                        execute that contains a REPEAT loop unitl the level
+                        is clear, [ESC] is pressed or the player dies.
+
+  Procedure FindPath
+  дддддддддддддддддд
+This is a brilliant algorithm made by Arile Keselman (member of dark-cloud
+team) for finding the shortest way to a sopt in a map.
+
+  Here is how it works:
+
+  Lets say you have this map
+
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ a Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  ЁXXЁ  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ b Ё  Ё  Ё  ЁшшЁшшЁшшЁшшЁшшЁшшЁшшЁ  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ c Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё╠╠Ё  ЁшшЁ  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ d Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  ЁшшЁшшЁ  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ e Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  ЁшшЁшшЁшшЁшшЁ  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ f Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+
+  Where
+    шш - Walls
+    ╠╠ - Player
+    XX - Mouunster
+
+The mousnter has to find the shortest way to the player. How does she do it?
+we fill a "Path-Map" with the distance of the paleyer like this:
+
+1. First we write in the player place 1, where there are walls,
+FF and in all others palces we write 0:
+
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ a Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ b Ё0 Ё0 Ё0 ЁFFЁFFЁFFЁFFЁFFЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ c Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё1 Ё0 ЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ d Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 ЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ e Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 ЁFFЁFFЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ f Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+
+2. Then arround the number 1 (if the place is marked as 0) we put 2:
+
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ a Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ b Ё0 Ё0 Ё0 ЁFFЁFFЁFFЁFFЁFFЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ c Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё2 Ё1 Ё2 ЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ d Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё2 ЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ e Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 ЁFFЁFFЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ f Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+
+3. Arround 2 we write 3:
+
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ a Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ b Ё0 Ё0 Ё0 ЁFFЁFFЁFFЁFFЁFFЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ c Ё0 Ё0 Ё0 Ё0 Ё0 Ё3 Ё2 Ё1 Ё2 ЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ d Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё3 Ё2 ЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ e Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё3 Ё0 ЁFFЁFFЁFFЁFFЁ0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ f Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё0 Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+
+
+   If we continue it until the map is filled we will get this:
+
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ a Ё10Ё9 Ё8 Ё9 Ё10Ё11Ё12Ё13Ё14Ё15Ё16Ё17Ё16Ё15Ё16Ё17Ё18Ё19Ё20Ё21Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ b Ё9 Ё8 Ё7 ЁFFЁFFЁFFЁFFЁFFЁFFЁFFЁ17Ё16Ё15Ё14Ё15Ё16Ё17Ё18Ё19Ё20Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ c Ё8 Ё7 Ё6 Ё5 Ё4 Ё3 Ё2 Ё1 Ё2 ЁFFЁ16Ё15Ё14Ё13Ё14Ё15Ё16Ё17Ё18Ё19Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ d Ё8 Ё7 Ё6 Ё5 Ё4 Ё3 Ё2 Ё2 ЁFFЁFFЁ15Ё14Ё13Ё12Ё13Ё14Ё15Ё16Ё17Ё18Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ e Ё9 Ё8 Ё7 Ё6 Ё5 Ё4 Ё3 Ё3 Ё4 ЁFFЁFFЁFFЁFFЁ11Ё12Ё13Ё14Ё15Ё16Ё17Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ f Ё10Ё9 Ё8 Ё7 Ё6 Ё5 Ё4 Ё4 Ё5 Ё6 Ё7 Ё8 Ё9 Ё10Ё11Ё12Ё13Ё14Ё15Ё16Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+
+  Now lets say that the mounster is in (a,10)=15, if he wants to find the
+player he only needs to go to a lower or equal number then he is on. In this
+case to (a,11) or (a,9) because they are marked with 14.
+
+  This will be his final way:
+
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ a Ё  Ё  ЁздЁддЁддЁддЁддЁддЁддЁXXЁм╩Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ b Ё  Ё  ЁЁ ЁшшЁшшЁшшЁшшЁшшЁшшЁшшЁ ╨Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ c Ё  Ё  ЁюдЁддЁддЁддЁдЁ╠╠Ё  ЁшшЁ ╨Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ d Ё  Ё  Ё  Ё  Ё  Ё  Ё  Ё ЁшшЁшшЁ хЁммЁммЁм╩Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ e Ё  Ё  Ё  Ё  Ё  Ё  Ё  ЁгдЁд╥ЁшшЁшшЁшшЁшшЁ ╨Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+ f Ё  Ё  Ё  Ё  Ё  Ё  Ё  ЁхмЁммЁммЁммЁммЁммЁм╪Ё  Ё  Ё  Ё  Ё  Ё  Ё
+   еддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддеддедде
+
+   д  First way
+   м  Second way
+
+  Buggs
+  ддддд
+  This way is very slow, I mean the procedure I have to find the path
+is very slow, and somehow I could not optimize it. If you have a faster
+procedure please E-Mail us.
+
+  If you want to write a C&C or War Craft game you will find another
+disadvantage: every soldier needs a map for where he needs to go right?
+Well it consumes a lot of memory, expecialy if you have a big map, wich of
+course cant be larger than 64K: a map bigger than 320x200 is imposible,
+unless you use 32-bit instruction set wich Turbo-Pascal does not support.
+
+  If you had notice this algorithm was mode in such way it does not allow
+moving in disgonals to move even faster.
+
+
+  Unit PackMan3
+  ддддддддддддд
+
+  This unit is where I declared the TPlayer object, a descendant of
+TCharacter. the source is very clear, so just see it for more details.
+
+
+  Unit PackMan4
+  ддддддддддддд
+
+  In this unit I declared all the mounsters, of course they are all
+descendants of TCharacter.
+
+  TMounster = object        This is the basic mounster that the game has.
+                            It just moves arround in the maze and does not
+                            run away from the packman or chaes it. If the
+                            player and the mounster are in the same spot then
+                            the mounster kills the player just by calling
+                            TheLevel^.Player^.SetState( sfDead, True ).
+
+  TChaseMounster = object   This mounster chases the player if its distance
+                            from him is DeltaX=13, DeltaY=7 (Unit PackMan4
+                            line 222), but is the player i strong
+                            (GetState(sfStrong) it runs away from it.
+                            Otherwize it behaves just as a normal TMounster.
+
+  THuntMounster = object    This mounster chases the player using PathFind.
+                            The way to the player is caculated every
+                            2500 m-Sec (Unit PackMan2 line 24).
+
+
+  Unit PackMan5
+  ддддддддддддд
+
+  In this unit I declared the objects for the main game. I really dont want
+to write any more and the code is easy, so just look at it.
+
+
+
+    эээээээээээээээээээээээ
+        Special thanks
+    ъъъъъъъъъъъъъъъъъъъъъъъ
+
+  I need to thank a special dude who found bugs in the last release: (there
+ were 2 file missing XTNDMODE.PAS, FONT8X16.PAS).
+
+          SERGE : Thank you for those E-Mails, if you find any more bugs
+                  tell us. Keep in touch.
+
+
+  - and as always dont forget to visit our internet site and leave us E-Mail
+
+            http://www.getcities.com/SiliconValley/Vista/1595
+            dark-cloud@geocities.com
+
+p.s. Winslows 95 sukcs. Very sucks.
+
+
