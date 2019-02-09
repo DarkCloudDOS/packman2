@@ -31,9 +31,6 @@ Const
   (* Max stuff  *)
   MaxText         = 15;
 
-  (* Files      *)
-  FontFile        = 'C:\BP\DOS.FNT';
-
   (* Colors     *)
   TheTextColor     = 10;
   BackGroundColor  = 25;
@@ -166,8 +163,7 @@ Begin
   Randomize;
   Load_World_1;
   New( Font );
-  LoadFont( FontFile, Font^ );
-
+  SetBiosFont(Font^);
 {$IFNDEF NO_SOUNDS}
   UsingSB:= ResetDSP( bp220h );
   If Not UsingSB Then UsingSB:= ResetDSP( bp240h );
