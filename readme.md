@@ -17,6 +17,9 @@ Nothing to add. You know how this works. The gameplay is slow...
 
 Please comment if I should adjust the timings for the year 2019. 
 
+
+![](packman2.png?raw=true)
+
 # PMLE - Packman2 Level Editor
 
    The level editor is where you edit the levels for Pack Man 2 - The Revenge.
@@ -33,6 +36,9 @@ game. That means that you need to add the new condition NO_SOUND. It also
 has the bug of the sounds and the problem with graphics. You need a lot of
 memory to run it, ifyou dont have refer to PACKMAN.DOC to see how you can
 run the game from TURBO-PASCAL and have a lot of memory.
+
+
+![](pmle.png?raw=true)
 
 ##   Drawing something
    
