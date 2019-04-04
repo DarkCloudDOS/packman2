@@ -1,49 +1,43 @@
-Directory of D:\PACKMAN2\.
-.              <DIR>            23-03-2019  6:59
-..             <DIR>            23-03-2019  6:56
-ADTHELIB HSC             10,804 10-05-1993 12:00
-ADVHSC   TPU              5,184 08-02-2019 18:53
-BUILD    BAT                 83 09-02-2019 16:14
-DEADDOG  WAV             13,274 09-07-1993 21:43
-FIGHT    HSC              5,043 29-10-1992  9:02
-FONT8X16 PAS              4,100 29-07-1997 10:33
-FONT8X8  PAS              4,247 24-04-1997 17:46
-HAPPY    WAV             34,860 24-12-1994 13:25
-HEREDOG  WAV             19,500 09-07-1993 18:21
-HSCOBJ   TPU              3,936 08-02-2019 18:53
-HULKSTER WAV             57,160 13-11-1995  0:34
-MAKEZIP  SH                 344 01-03-2019 20:10
-NIII     WAV              5,802 18-07-1996 21:00
-PACKMAN  CEL             64,800 04-04-1997 16:58
-PACKMAN  DOC             19,996 31-07-1997 22:43
-PACKMAN  FNT              2,048 09-09-1996 19:50
-PACKMAN  PAS              8,487 12-04-1997 16:57
-PACKMAN  VEL              6,481 07-04-1997 13:40
-PACKMAN1 PAS              7,572 12-04-1997 14:36
-PACKMAN2 CEL             64,800 26-01-1997  3:51
-PACKMAN2 PAS             17,702 07-04-1997 13:41
-PACKMAN2 ZIP            322,206 01-03-2019 20:11
-PACKMAN3 CEL             64,800 08-04-1997 13:06
-PACKMAN3 PAS              5,110 12-04-1997 14:31
-PACKMAN4 CEL             64,800 08-04-1997 13:39
-PACKMAN4 PAS              8,237 12-04-1997 16:14
-PACKMAN5 PAS              5,977 13-04-1997 20:02
-PMLE     DOC              4,787 29-07-1997 11:33
-PMLE     EXE             33,952 08-02-2019 22:10
-PMLEMF   DOC                438 31-07-1997 23:27
-READ     ME!              1,635 01-03-2019 20:09
-README   BAT                 23 21-04-1997 20:47
-README   MD               4,034 01-03-2019 20:07
-SB       PAS              8,867 07-04-1997  9:20
-SCREEN   CEL             64,800 02-04-1997 13:28
-TRI5     WAV             14,829 30-06-1995 13:20
-UTILS    PAS             30,173 13-04-1997 12:27
-VIEWER   COM             49,063 21-04-1997 20:30
-WORLD1   COL                768 04-04-1997 16:58
-WORLD1   PMP              3,102 04-04-1997 17:02
-WORLD2   COL                768 13-04-1997 19:57
-WORLD2   PMP              3,102 13-04-1997 20:05
-WVBOMBE  HSC              7,347 04-12-1992  9:05
-XTNDMODE PAS              2,473 29-07-1997 10:31
-   61 File(s)         1,225,166 Bytes.
-    3 Dir(s)        262,111,744 Bytes free.
+Archive:  packman2.zip
+Zip file size: 287549 bytes, number of entries: 40
+-rwxa--     2.0 fat       23 t- stor 97-Apr-21 20:47 PACKMAN2/README.BAT
+-rw-a--     2.0 fat    64800 b- defN 97-Apr-04 16:58 PACKMAN2/PACKMAN.CEL
+-rw-a--     2.0 fat    64800 b- defN 97-Jan-26 03:51 PACKMAN2/PACKMAN2.CEL
+-rw-a--     2.0 fat    64800 b- defN 97-Apr-08 13:06 PACKMAN2/PACKMAN3.CEL
+-rw-a--     2.0 fat    64800 b- defN 97-Apr-08 13:39 PACKMAN2/PACKMAN4.CEL
+-rw-a--     2.0 fat    64800 b- defN 97-Apr-02 13:28 PACKMAN2/SCREEN.CEL
+-rw-a--     2.0 fat      768 b- defN 97-Apr-04 16:58 PACKMAN2/WORLD1.COL
+-rw-a--     2.0 fat      768 b- defN 97-Apr-13 19:57 PACKMAN2/WORLD2.COL
+-rwxa--     2.0 fat    49063 b- defN 97-Apr-21 20:30 PACKMAN2/VIEWER.COM
+-rw-a--     2.0 fat     3936 b- defN 94-May-13 14:50 PACKMAN2/HSCOBJ.TPU
+-rw-a--     2.0 fat     2048 b- defN 96-Sep-09 19:50 PACKMAN2/PACKMAN.FNT
+-rw-a--     2.0 fat    10804 b- defN 93-May-10 12:00 PACKMAN2/ADTHELIB.HSC
+-rw-a--     2.0 fat     5043 b- defN 92-Oct-29 09:02 PACKMAN2/FIGHT.HSC
+-rw-a--     2.0 fat     7347 b- defN 92-Dec-04 09:05 PACKMAN2/WVBOMBE.HSC
+-rw-a--     2.0 fat      938 t- defN 96-Oct-18 11:33 PACKMAN2/READ.ME!
+-rw-a--     2.0 fat     8487 t- defN 97-Apr-12 16:57 PACKMAN2/PACKMAN.PAS
+-rw-a--     2.0 fat     7572 t- defN 97-Apr-12 14:36 PACKMAN2/PACKMAN1.PAS
+-rw-a--     2.0 fat    17702 t- defN 97-Apr-07 13:41 PACKMAN2/PACKMAN2.PAS
+-rw-a--     2.0 fat     5110 t- defN 97-Apr-12 14:31 PACKMAN2/PACKMAN3.PAS
+-rw-a--     2.0 fat     8237 t- defN 97-Apr-12 16:14 PACKMAN2/PACKMAN4.PAS
+-rw-a--     2.0 fat     5977 t- defN 97-Apr-13 20:02 PACKMAN2/PACKMAN5.PAS
+-rw-a--     2.0 fat    21700 t- defN 97-Apr-07 19:38 PACKMAN2/PMLE.PAS
+-rw-a--     2.0 fat     3102 b- defN 97-Apr-04 17:02 PACKMAN2/WORLD1.PMP
+-rw-a--     2.0 fat     3102 b- defN 97-Apr-13 20:05 PACKMAN2/WORLD2.PMP
+-rw-a--     2.0 fat     6481 b- defN 97-Apr-07 13:40 PACKMAN2/PACKMAN.VEL
+-rw-a--     2.0 fat    13274 b- defN 93-Jul-09 21:43 PACKMAN2/DEADDOG.WAV
+-rw-a--     2.0 fat    34860 b- defN 94-Dec-24 13:25 PACKMAN2/HAPPY.WAV
+-rw-a--     2.0 fat    19500 b- defN 93-Jul-09 18:21 PACKMAN2/HEREDOG.WAV
+-rw-a--     2.0 fat    57160 b- defN 95-Nov-13 00:34 PACKMAN2/HULKSTER.WAV
+-rw-a--     2.0 fat     5802 b- defN 96-Jul-18 21:00 PACKMAN2/NIII.WAV
+-rw-a--     2.0 fat    14829 b- defN 95-Jun-30 13:20 PACKMAN2/TRI5.WAV
+-rw-a--     2.0 fat     4247 t- defN 97-Apr-24 17:46 PACKMAN2/FONT8X8.PAS
+-rw-a--     2.0 fat     8867 t- defN 97-Apr-07 09:20 PACKMAN2/SB.PAS
+-rw-a--     2.0 fat    30173 t- defN 97-Apr-13 12:27 PACKMAN2/UTILS.PAS
+-rw-a--     2.0 fat    19996 t- defN 97-Jul-31 22:43 PACKMAN2/PACKMAN.DOC
+-rw-a--     2.0 fat     5184 b- defN 94-May-13 14:50 PACKMAN2/ADVHSC.TPU
+-rw-a--     2.0 fat     4787 t- defN 97-Jul-29 11:33 PACKMAN2/PMLE.DOC
+-rw-a--     2.0 fat     4100 t- defN 97-Jul-29 10:33 PACKMAN2/FONT8X16.PAS
+-rw-a--     2.0 fat     2473 t- defN 97-Jul-29 10:31 PACKMAN2/XTNDMODE.PAS
+-rw-a--     2.0 fat      172 t- defN 02-Aug-10 23:35 LEAME.TXT
+40 files, 717632 bytes uncompressed, 282955 bytes compressed:  60.6%
